@@ -3,7 +3,11 @@ require 'sinatra/base'
 class Birthday < Sinatra::Base
 
   get '/' do
-    'Birthday'
+    erb :index
+  end
+
+  post '/name' do
+    name = params[:name]
   end
 
   run! if app_file == $0
