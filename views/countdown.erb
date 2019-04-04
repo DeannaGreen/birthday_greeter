@@ -1,1 +1,8 @@
-<h1>Countdown</h1>
+<div style="text-align:center">
+  <% if @countdown.days_to_next_bday == 1 %>
+   <h2>Happy Birthday!!</h2>
+   <img src="http://media.giphy.com/media/3oEhn78T277GKAq6Gc/giphy.gif">
+  <% else %>
+   <h2><%= @countdown.days_to_next_bday %> days till your birthday!</h2>
+  <% end %>
+</div>

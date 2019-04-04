@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require './lib/person.rb'
+require './lib/countdown'
 
 class Birthday < Sinatra::Base
 
@@ -8,11 +8,14 @@ class Birthday < Sinatra::Base
   end
 
   post '/name_birthday' do
-    user = Person.new(params[:name],params[:birthday])
+    @name = params[:name]
+    $day = params[:day]
+    $month = params[:month]
     redirect('/countdown')
   end
 
   get '/countdown' do
+    @countdown = Countdown.new($day, $month)
     erb :countdown
   end
 
