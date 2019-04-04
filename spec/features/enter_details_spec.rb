@@ -1,6 +1,6 @@
 feature 'Home page' do
-  let(:date) { Date.today }
-  let(:month) { Date.today }
+  let(:date) { Date.today.mday }
+  let(:month) { Date.today.mon }
 
   scenario 'greeting the user' do
     visit('/')
@@ -10,8 +10,8 @@ feature 'Home page' do
   scenario 'says happy birthday if your birthday is today' do
     visit('/')
     fill_in :name, with: 'Deanna'
-    fill_in :day, with: '4'
-    fill_in :month, with: '4'
+    fill_in :day, with: date
+    fill_in :month, with: month
     click_button 'Go!'
     expect(page).to have_content 'Happy Birthday!'
   end
