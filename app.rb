@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require './lib/person.rb'
 
 class Birthday < Sinatra::Base
 
@@ -7,8 +8,12 @@ class Birthday < Sinatra::Base
   end
 
   post '/name_birthday' do
-    name = params[:name]
-    birthday = params[:birthday]
+    user = Person.new(params[:name],params[:birthday])
+    redirect('/countdown')
+  end
+
+  get '/countdown' do
+    erb :countdown
   end
 
   run! if app_file == $0
