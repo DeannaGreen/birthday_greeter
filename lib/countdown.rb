@@ -9,6 +9,14 @@ class Countdown
     @no_of_days = 0
   end
 
+  def self.instance
+    @countdown
+  end
+
+  def self.create(day, month)
+    @countdown = Countdown.new(day, month)
+  end
+
   def days_to_next_bday
     next_year = Date.today.year + 1
     next_bday = "#{@day}-#{@month}-#{next_year}"
